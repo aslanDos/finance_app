@@ -1,9 +1,9 @@
 import { View, Text } from "react-native";
 
-export default function Settings() {
+export default function Analytics() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Settings</Text>
+      <Text>Analytics page</Text>
     </View>
   );
 }
