@@ -2,16 +2,16 @@ import { View, Text, StyleSheet } from "react-native";
 import { useStore } from "@/store/useStore";
 
 export default function SummaryCards() {
-  const { statement, balance } = useStore();
+  const transactions = useStore((s) => s.transactions ?? []);
+  const totalBalance = useStore((s) => s.totalBalance ?? 0);
 
-  // Calculate totals
-  const income = statement
+  const income = transactions
     .filter((t) => t.type === "income")
-    .reduce((sum, t) => sum + t.amount, 0);
+    .reduce((sum, t) => sum + (t.amount || 0), 0);
 
-  const expenses = statement
+  const expenses = transactions
     .filter((t) => t.type === "expense")
-    .reduce((sum, t) => sum + t.amount, 0);
+    .reduce((sum, t) => sum + (t.amount || 0), 0);
 
   return (
     <View style={styles.container}>
@@ -21,21 +21,24 @@ export default function SummaryCards() {
           ${income.toFixed(2)}
         </Text>
       </View>
+
       <View style={[styles.card, { backgroundColor: "#fdeaea" }]}>
         <Text style={styles.label}>Expenses</Text>
         <Text style={[styles.value, { color: "#ff4444" }]}>
           ${expenses.toFixed(2)}
         </Text>
       </View>
+
       <View style={[styles.card, { backgroundColor: "#edf3ff" }]}>
         <Text style={styles.label}>Balance</Text>
         <Text style={[styles.value, { color: "#007AFF" }]}>
-          ${balance.total.toFixed(2)}
+          ${totalBalance.toFixed(2)}
         </Text>
       </View>
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {

@@ -114,7 +114,7 @@ export default function AddTransactionModal({
   return (
     <Modal
       visible={visible}
-      animationType="slide"
+      animationType='slide'
       transparent
       onRequestClose={onClose}
     >
@@ -221,7 +221,7 @@ export default function AddTransactionModal({
                   <DateTimePicker
                     value={date}
                     mode="date"
-                    display={Platform.OS === "ios" ? "inline" : "default"}
+                    display={Platform.OS === "ios" ? "spinner" : "default"}
                     onChange={(_, d) => {
                       setShowDate(false);
                       if (d) setDate(d);
@@ -279,7 +279,7 @@ export default function AddTransactionModal({
 const styles = StyleSheet.create({
   backdrop: {
     flex: 1,
-    backgroundColor: "rgba(0,0,0,0.35)",
+    backgroundColor: "rgba(0,0,0,0.40)",
     justifyContent: "flex-end",
   },
   sheet: {

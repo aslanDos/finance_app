@@ -25,9 +25,11 @@ export default function EditTransactionModal({
   onClose: () => void;
   transactionId: string | null;
 }) {
-  const { statement, deleteTransaction, addTransaction } = useStore();
+  const { transactions, deleteTransaction, addTransaction } = useStore();
 
-  const transaction = statement.find((t) => t.id === transactionId);
+  // FIXED: Было `statement.find`, теперь:
+  const transaction = transactions.find((t) => t.id === transactionId);
+
   const [type, setType] = useState<TxType>("expense");
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("Shopping");
@@ -37,10 +39,10 @@ export default function EditTransactionModal({
 
   useEffect(() => {
     if (transaction) {
-      setType(transaction.type);
+      setType(transaction.type as TxType);
       setAmount(transaction.amount.toString());
       setDescription(transaction.note || "");
-      setCategory(transaction.note || "Shopping");
+      setCategory(transaction.category_id || "Shopping");
       setDate(new Date(transaction.date));
     }
   }, [transaction]);
@@ -58,14 +60,22 @@ export default function EditTransactionModal({
   if (!transaction) return null;
 
   const handleSave = async () => {
-    // Remove old transaction and add updated one
     await deleteTransaction(transaction.id);
+
     await addTransaction({
       amount: parseFloat(amount || "0"),
       type,
       note: description || category,
       date: date.toISOString(),
+
+      // Временно ставим category_id и payment_id
+      category_id: category, // временно
+      payment_id: transaction.payment_id ?? "default-wallet",
+
+      // Тип операции — заглушка, позже ты подставишь реальное значение
+      operation_kind: "regular",
     });
+
     onClose();
   };
 
@@ -75,12 +85,7 @@ export default function EditTransactionModal({
   };
 
   return (
-    <Modal
-      visible={visible}
-      animationType="slide"
-      transparent
-      onRequestClose={onClose}
-    >
+    <Modal visible={visible} animationType="slide" transparent onRequestClose={onClose}>
       <View style={styles.backdrop}>
         <View style={styles.sheet}>
           {/* Header */}
@@ -112,6 +117,7 @@ export default function EditTransactionModal({
                   Expense
                 </Text>
               </TouchableOpacity>
+
               <TouchableOpacity
                 style={[styles.segmentBtn, type === "income" && styles.segmentActive]}
                 onPress={() => setType("income")}
@@ -193,10 +199,6 @@ export default function EditTransactionModal({
                 <Text style={styles.btnDeleteText}>Delete</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={styles.btnSecondary} onPress={onClose}>
-                <Text style={styles.btnSecondaryText}>Cancel</Text>
-              </TouchableOpacity>
-
               <TouchableOpacity style={styles.btnPrimary} onPress={handleSave}>
                 <Text style={styles.btnPrimaryText}>Save</Text>
               </TouchableOpacity>
@@ -208,10 +210,10 @@ export default function EditTransactionModal({
   );
 }
 
+
 const styles = StyleSheet.create({
   backdrop: {
     flex: 1,
-    backgroundColor: "rgba(0,0,0,0.35)",
     justifyContent: "flex-end",
   },
   sheet: {
@@ -288,7 +290,7 @@ const styles = StyleSheet.create({
   pickerBox: {
     height: 46,
     borderRadius: 10,
-    backgroundColor: "#f2f2f7",
+    // backgroundColor: "#f2f2f7",
     overflow: "hidden",
     justifyContent: "center",
     marginBottom: 10,
