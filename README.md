@@ -88,8 +88,3 @@ This structure ensures clarity, modularity, and scalability as the app grows.
 ## 🙌 Author
 
 Developed by **Aslan Dossymzhan**.
-
-
-
-Хочешь версию с красивыми бейджами, секцией скриншотов и ссылками на другие проекты?
-```
