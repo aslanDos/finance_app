@@ -1,50 +1,100 @@
-# Welcome to your Expo app 👋
+Вот полностью готовый **англоязычный README.md**, оформленный аккуратно, структурно и подходит для Open-Source. Можешь просто вставить его в свой репозиторий как `README.md`.
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+---
 
-## Get started
+````md
+# 📱 Finance App
 
-1. Install dependencies
+**Finance App** is a personal finance management application built with **React Native**, **Expo**, and **TypeScript**.  
+The app helps users track expenses and income, manage budgets, and maintain visibility over their financial activity — all within a clean and intuitive mobile experience.
 
-   ```bash
-   npm install
-   ```
+---
 
-2. Start the app
+## ✨ Features
 
-   ```bash
-   npx expo start
-   ```
+- **💸 Track Transactions**  
+  Add, view, and manage income and expense records.
 
-In the output, you'll find options to open the app in a
+- **📊 Budget & Balance Overview**  
+  See how much you spend, how much you earn, and your current available balance.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- **🎨 Clean UI & UX**  
+  Simple, modern interface built with reusable components.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- **⚙️ TypeScript First**  
+  Strong typing across the project for improved reliability and maintainability.
 
-## Get a fresh project
+- **🧱 Modular Structure**  
+  Components, types, utilities, and state management are separated for scalability.
 
-When you're ready, run:
+---
+
+## 🚀 Getting Started
+
+### 1️⃣ Clone the repository
+```bash
+git clone https://github.com/aslanDos/finance_app.git
+cd finance_app
+````
+
+### 2️⃣ Install dependencies
 
 ```bash
-npm run reset-project
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 3️⃣ Start the Expo development server
 
-## Learn more
+```bash
+npx expo start
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+---
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## 🧩 Project Structure
 
-## Join the community
+```
+finance_app/
+├── app/                # Root application screens & navigation
+├── assets/             # Images, icons, fonts, static files
+├── components/         # Shared reusable UI components
+├── lib/                # Utilities, helpers, API functions
+├── store/              # State management (store, slices, actions)
+├── types/              # TypeScript interfaces & global types
+└── README.md
+```
 
-Join our community of developers creating universal apps.
+This structure ensures clarity, modularity, and scalability as the app grows.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+---
+
+## 🛠️ Tech Stack
+
+* **React Native**
+* **Expo**
+* **TypeScript**
+* **Expo router** (if used)
+
+
+---
+
+## 🌱 Roadmap / Future Enhancements
+
+* 🔐 Authentication (optional)
+* ☁️ Cloud sync or backend integration
+* 🧾 Categories, tags & advanced filtering
+* 📈 Charts and monthly analytics
+* 🗂️ Export / import of transactions (CSV / JSON)
+* 🌍 Multi-language support
+* 🧪 Unit & UI tests
+
+---
+
+## 🙌 Author
+
+Developed by **Aslan Dossymzhan**.
+
+
+
+Хочешь версию с красивыми бейджами, секцией скриншотов и ссылками на другие проекты?
+```
