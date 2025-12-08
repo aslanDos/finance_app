@@ -1,6 +1,3 @@
----
-
-````md
 # 📱 Finance App
 
 **Finance App** is a personal finance management application built with **React Native**, **Expo**, and **TypeScript**.  
