@@ -68,7 +68,7 @@ This structure ensures clarity, modularity, and scalability as the app grows.
 * **React Native**
 * **Expo**
 * **TypeScript**
-* **Expo router** (if used)
+* **Expo router**
 
 
 ---
